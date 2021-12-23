@@ -1,49 +1,71 @@
 const getState = ({ getStore, getActions, setStore }) => {
-	return {
-		store: {
-			message: null,
-			demo: [
-				{
-					title: "FIRST",
-					background: "white",
-					initial: "white"
-				},
-				{
-					title: "SECOND",
-					background: "white",
-					initial: "white"
-				}
-			]
-		},
-		actions: {
-			// Use getActions to call a function within a fuction
-			exampleFunction: () => {
-				getActions().changeColor(0, "green");
-			},
-
-			getMessage: () => {
-				// fetching data from the backend
-				fetch(process.env.BACKEND_URL + "/api/hello")
-					.then(resp => resp.json())
-					.then(data => setStore({ message: data.message }))
-					.catch(error => console.log("Error loading message from backend", error));
-			},
-			changeColor: (index, color) => {
-				//get the store
-				const store = getStore();
-
-				//we have to loop the entire demo array to look for the respective index
-				//and change its color
-				const demo = store.demo.map((elm, i) => {
-					if (i === index) elm.background = color;
-					return elm;
-				});
-
-				//reset the global store
-				setStore({ demo: demo });
-			}
-		}
-	};
+  return {
+    store: {
+      backEndUrl: process.env.BACKEND_URL,
+      loggedUser: {},
+      recipeList: [],
+      favoritesList: [],
+      filteredRecipes: [],
+    },
+    actions: {
+      updateUser: (loginInfo) => {
+        setStore({ loggedUser: loginInfo });
+      },
+      logout: () => setStore({ loggedUser: null }),
+      getRecipes: () => {
+        fetch(`${getStore().backEndUrl}/api/recipe/user/1`)
+          .then((res) => res.json())
+          .then((data) => setStore({ recipeList: data }))
+          .catch((err) => console.error(err));
+      },
+      addRecipe: (newRecipe) => {
+        fetch(`${getStore().backEndUrl}/api/recipe`, {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify(newRecipe),
+        })
+          .then((response) => response.json())
+          .then((data) => setStore({ recipeList: data }))
+          .catch((err) => console.error("Error:", err));
+      },
+      updateRecipe: (updatedRecipe) => {
+        fetch(`${getStore().backEndUrl}/api/recipe/1`, {
+          method: "PUT",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify(updatedRecipe),
+        })
+          .then((response) => response.json())
+          .then((data) => setStore({ recipeList: data }))
+          .catch((err) => console.error("Error:", err));
+      },
+      deleteRecipe: (id) => {
+        fetch(`${getStore().backEndUrl}/api/recipe/${id}`, {
+          method: "DELETE",
+        })
+          .then((response) => response.json())
+          .then((data) => setStore({ recipeList: data }))
+          .catch((err) => console.error("Error:", err));
+      },
+      filterByTitle: (title) => {
+        let filterTitle = getStore().recipeList;
+        filterRecipes = filterTitle.filter((item) => title !== item);
+        setStore({ filteredRecipes: filterRecipes });
+      },
+      addFavorites: (name) => {
+        let favsList = getStore().favoritesList;
+        if (!getStore().favoritesList.find((item) => item == name)) {
+          favsList.push(name);
+        }
+        setStore({ favoritesList: favsList });
+      },
+      deleteFavorite: (name) => {
+        let filterFavorites = getStore().favoritesList.filter(
+          (favoriteToRemove, index) => name != favoriteToRemove
+        );
+        setStore({ favoritesList: filterFavorites });
+      },
+    },
+  };
 };
 
 export default getState;

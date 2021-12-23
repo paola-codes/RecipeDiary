@@ -1,7 +1,14 @@
-/*
-    home.css: This website contains selectors only used in home.css
+.hidden {
+  display: none;
+}
 
-    All pages share the styles on index.css but you should create 
-    one more css for each page that will contain the selected used 
-    on that page only (the ones not reused in other pages).
-*/
+@import url("https://fonts.googleapis.com/css2?family=IBM+Plex+Serif:wght@500&family=Patrick+Hand&display=swap");
+
+* {
+  font-family: "IBM Plex Serif", serif;
+  font-family: "Patrick Hand", cursive;
+}
+
+body {
+  background-color: #212529;
+}

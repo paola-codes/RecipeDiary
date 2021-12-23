@@ -1,3 +1,10 @@
-/* 
-    General Styles used on every website (Don't Repeat Yourself)
-*/
+.hidden {
+  display: none;
+}
+
+@import url("https://fonts.googleapis.com/css2?family=IBM+Plex+Serif:wght@500&family=Patrick+Hand&display=swap");
+
+* {
+  font-family: "IBM Plex Serif", serif;
+  font-family: "Patrick Hand", cursive;
+}

@@ -1,5 +1,4 @@
 import React, { useState, useContext } from "react";
-import { PropTypes } from "prop-types";
 import { Link } from "react-router-dom";
 import { Context } from "../store/appContext";
 
@@ -22,10 +21,10 @@ export const AddRecipe = () => {
   return (
     <div className="container p-4 text-center text-light fs-6 m-auto">
       <div>
-        <h1 className="text-center my-3">Add Recipe</h1>
+        <h1 className="text-center my-3">Add New Recipe</h1>
         <form className="text-start">
           <div className="form-group my-2">
-            <label>Title</label>
+            <label>Title:</label>
             <input
               type="text"
               className="form-control"
@@ -35,7 +34,7 @@ export const AddRecipe = () => {
             />
           </div>
           <div className="form-group my-2">
-            <label>Ingredients</label>
+            <label>Ingredients:</label>
             <input
               type="text"
               className="form-control"
@@ -45,7 +44,7 @@ export const AddRecipe = () => {
             />
           </div>
           <div className="form-group my-2">
-            <label>Instructions</label>
+            <label>Instructions:</label>
             <input
               type="text"
               className="form-control"
@@ -55,7 +54,7 @@ export const AddRecipe = () => {
             />
           </div>
           <div className="form-group my-2">
-            <label>Ocassion</label>
+            <label>Ocassion:</label>
             <input
               type="text"
               className="form-control"
@@ -65,7 +64,7 @@ export const AddRecipe = () => {
             />
           </div>
           <div className="form-group my-2">
-            <label>Difficulty</label>
+            <label>Difficulty:</label>
             <input
               type="text"
               className="form-control"
@@ -75,7 +74,7 @@ export const AddRecipe = () => {
             />
           </div>
           <div className="form-group my-2">
-            <label>Comments</label>
+            <label>Comments:</label>
             <input
               type="text"
               className="form-control"
@@ -85,16 +84,18 @@ export const AddRecipe = () => {
             />
           </div>
         </form>
-        <Link to="/userHomePage">
-          <button
-            className="btn btn-warning btn-lg p-2 m-3"
-            onClick={() => {
-              actions.addRecipe(newRecipe);
-            }}
-          >
-            Add Recipe
-          </button>
-        </Link>
+        <div className="text-start">
+          <Link to="/userHomePage">
+            <button
+              className="btn btn-warning btn-lg p-2 m-0 my-3"
+              onClick={() => {
+                actions.addRecipe(newRecipe);
+              }}
+            >
+              Add Recipe
+            </button>
+          </Link>
+        </div>
       </div>
     </div>
   );

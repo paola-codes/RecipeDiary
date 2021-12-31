@@ -61,7 +61,7 @@ def user_login():
         user.serialize()
     ), 200
 
-#List of Recipes 
+#List of Recipes of certain User
 @api.route('/recipe/user/<user_id>', methods=['GET'])
 def get_recipes(user_id):
 
@@ -72,7 +72,7 @@ def get_recipes(user_id):
         all_recipes
     ), 200
 
-#Add New Recipe
+#Add New Recipe Based on User ID
 @api.route('/recipe', methods=['POST'])
 def add_recipe():
 
@@ -84,7 +84,8 @@ def add_recipe():
         instructions = body["instructions"],
         ocassion = body["ocassion"],
         difficulty = body["difficulty"],
-        
+        comments = body["comments"],
+        user_id = body["user_id"]
     )
 
     db.session.add(new_recipe)
@@ -108,7 +109,6 @@ def update_recipe(id):
     recipe.ocassion = body["ocassion"]
     recipe.difficulty = body["difficulty"]
     recipe.comments = body["comments"]
-  
 
     db.session.commit()
 
@@ -117,6 +117,16 @@ def update_recipe(id):
     if recipe_query.title == body["title"]:
         return jsonify(recipe_query.serialize()), 200
     return "Update Failed"
+
+#Get Specific Recipe
+@api.route('/recipe/<id>', methods=['GET'])
+def get_specific_recipe(id):
+
+    recipe_query = Recipe.query.get(id)
+
+    return jsonify(
+        recipe_query.serialize()
+    ), 200
 
 #Delete Recipe
 @api.route('/recipe/<id>', methods=['DELETE'])

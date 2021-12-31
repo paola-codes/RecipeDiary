@@ -18,7 +18,6 @@ export const SignUp = () => {
     setNewUser({ ...newUser, [e.target.name]: e.target.value });
 
   const addUser = (myNewUser) => {
-    console.log("new user");
     fetch(`${store.backEndUrl}/api/user`, {
       method: "POST",
       headers: { "Content-Type": "application/json" },

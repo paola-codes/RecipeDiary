@@ -12,6 +12,7 @@ const getState = ({ getStore, getActions, setStore }) => {
         setStore({ loggedUser: loginInfo });
       },
       logout: () => setStore({ loggedUser: null }),
+      /*Recipes*/
       getRecipes: () => {
         fetch(`${getStore().backEndUrl}/api/recipe/user/1`)
           .then((res) => res.json())
@@ -28,8 +29,8 @@ const getState = ({ getStore, getActions, setStore }) => {
           .then((data) => setStore({ recipeList: data }))
           .catch((err) => console.error("Error:", err));
       },
-      updateRecipe: (updatedRecipe) => {
-        fetch(`${getStore().backEndUrl}/api/recipe/1`, {
+      updateRecipe: (updatedRecipe, id) => {
+        fetch(`${getStore().backEndUrl}/api/recipe/${id}`, {
           method: "PUT",
           headers: { "Content-Type": "application/json" },
           body: JSON.stringify(updatedRecipe),
@@ -51,16 +52,16 @@ const getState = ({ getStore, getActions, setStore }) => {
         filterRecipes = filterTitle.filter((item) => title !== item);
         setStore({ filteredRecipes: filterRecipes });
       },
-      addFavorites: (name) => {
+      addFavorites: (id) => {
         let favsList = getStore().favoritesList;
-        if (!getStore().favoritesList.find((item) => item == name)) {
-          favsList.push(name);
+        if (!getStore().favoritesList.find((item) => item == id)) {
+          favsList.push(id);
         }
         setStore({ favoritesList: favsList });
       },
-      deleteFavorite: (name) => {
+      deleteFavorite: (id) => {
         let filterFavorites = getStore().favoritesList.filter(
-          (favoriteToRemove, index) => name != favoriteToRemove
+          (favoriteToRemove, index) => id != favoriteToRemove
         );
         setStore({ favoritesList: filterFavorites });
       },

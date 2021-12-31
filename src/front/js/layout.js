@@ -47,7 +47,7 @@ const Layout = () => {
               <Navbar />
               <AddRecipe />
             </Route>
-            <Route exact path="/editRecipe">
+            <Route exact path="/editRecipe/:id">
               <Navbar />
               <EditRecipe />
             </Route>

@@ -2,34 +2,27 @@ import React from "react";
 import { useState } from "react";
 import { Context } from "../store/appContext";
 import { useContext } from "react";
-import { Link, Redirect } from "react-router-dom";
+import { Link } from "react-router-dom";
 
 export const Login = () => {
   const { actions, store } = useContext(Context);
 
-  const [newContact, setnewContact] = useState({
+  const [newUser, setnewUser] = useState({
     email: null,
     password: null,
   });
 
-  const [valid, setValid] = useState({
-    state: false,
-    type: "",
-  });
-
   const handleChange = (e) =>
-    setnewContact({ ...newContact, [e.target.name]: e.target.value });
+    setnewUser({ ...newUser, [e.target.name]: e.target.value });
 
-  const myFetch = (contactInfo) => {
+  const myFetch = (userInfo) => {
     fetch(`${store.backEndUrl}/api/login`, {
       method: "POST",
       headers: { "Content-Type": "application/json" },
-      body: JSON.stringify(contactInfo),
+      body: JSON.stringify(userInfo),
     })
       .then((response) => response.json())
       .then((data) => {
-        console.log(data);
-        setValid({ state: true, type: data.user_type });
         actions.updateUser(data);
       })
       .catch((err) => {
@@ -64,15 +57,15 @@ export const Login = () => {
         </div>
       </form>
       <div className="text-center m-4">
-        <button
-          type="button"
-          className="btn btn-primary"
-          onClick={() => myFetch(newContact)}
-        >
-          Login
-        </button>
-
-        {valid.state == true ? <Redirect to="/userHomePage" /> : ""}
+        <Link to="/userHomePage">
+          <button
+            type="button"
+            className="btn btn-primary"
+            onClick={() => myFetch(newUser)}
+          >
+            Login
+          </button>
+        </Link>
       </div>
     </div>
   );

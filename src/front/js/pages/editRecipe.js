@@ -1,32 +1,36 @@
-import React, { useState, useEffect, useContext } from "react";
+import React, { useContext, useState, useEffect } from "react";
 import { Link } from "react-router-dom";
-import { PropTypes } from "prop-types";
 import { Context } from "../store/appContext";
+import { useParams } from "react-router-dom";
 
 export const EditRecipe = () => {
   const { store, actions } = useContext(Context);
 
-  const [updatedRecipe, setUpdatedRecipe] = useState({
-    title: store.recipeList[1].title,
-    ingredients: store.recipeList[1].ingredients,
-    instructions: store.recipeList[1].instructions,
-    ocassion: store.recipeList[1].ocassion,
-    difficulty: store.recipeList[1].difficulty,
-    comments: store.recipeList[1].comments,
+  const { id } = useParams();
+
+  let recipe = store.recipeList.find((item, index) => {
+    if (item.id == id) {
+      return item;
+    }
   });
 
-  const handleChange = (e) =>
+  const [updatedRecipe, setUpdatedRecipe] = useState(recipe);
+
+  const handleChange = (e) => {
     setUpdatedRecipe({ ...updatedRecipe, [e.target.name]: e.target.value });
+  };
 
   return (
     <div className="container py-4 px-3 text-center text-light fs-4 my-1">
       <h1 className="text-center my-3">Recipe Information</h1>
 
-      <h2 className="mb-3">Change Recipe information on the fields below</h2>
+      <h4 className="mb-3 text-start">
+        Change Recipe information on the fields below
+      </h4>
 
       <form className="text-start">
         <div className="form-group my-1">
-          <label>Title</label>
+          <label>Title:</label>
           <input
             type="text"
             className="form-control"
@@ -37,7 +41,7 @@ export const EditRecipe = () => {
           />
         </div>
         <div className="form-group my-1">
-          <label>Ingredients</label>
+          <label>Ingredients:</label>
           <input
             type="text"
             className="form-control"
@@ -48,7 +52,7 @@ export const EditRecipe = () => {
           />
         </div>
         <div className="form-group my-1">
-          <label>Instructions</label>
+          <label>Instructions:</label>
           <input
             type="text"
             className="form-control"
@@ -59,7 +63,7 @@ export const EditRecipe = () => {
           />
         </div>
         <div className="form-group my-1">
-          <label>Ocassion</label>
+          <label>Ocassion:</label>
           <input
             type="text"
             className="form-control"
@@ -70,7 +74,7 @@ export const EditRecipe = () => {
           />
         </div>
         <div className="form-group my-1">
-          <label>Comments</label>
+          <label>Comments:</label>
           <input
             type="text"
             className="form-control"
@@ -81,16 +85,18 @@ export const EditRecipe = () => {
           />
         </div>
       </form>
-      <Link to="/userHomePage">
-        <button
-          className="btn btn-warning btn-lg p-2 w-75 m-auto my-3"
-          onClick={() => {
-            actions.updatedRecipe(updatedRecipe);
-          }}
-        >
-          Save Changes
-        </button>
-      </Link>
+      <div className="text-start">
+        <Link to="/userHomePage">
+          <button
+            className="btn btn-warning p-2 m-0 my-3"
+            onClick={() => {
+              actions.updateRecipe(updatedRecipe, id);
+            }}
+          >
+            Save Changes
+          </button>
+        </Link>
+      </div>
     </div>
   );
 };

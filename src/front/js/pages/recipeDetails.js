@@ -18,7 +18,14 @@ export const RecipeDetails = () => {
     return (
       <div className="container-fluid bg-light p-4 m-0">
         <div className="row p-0 m-0 mb-3 d-flex d-inline-column flex-wrap">
-          <h1 className="ms-3 p-0">{recipe.title}</h1>
+          <h1 className="ms-3 p-0">
+            <img
+              src="https://cdn-icons-png.flaticon.com/512/3058/3058973.png"
+              width="65rem"
+              className="pe-2"
+            />
+            {recipe.title}
+          </h1>
           <div className="col-6 p-0 m-0 ms-3 d-flex flex-column">
             <img
               src="https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fi.pinimg.com%2Foriginals%2F60%2F74%2F93%2F6074938bb69c862964aae1ec69ef95fc.jpg&f=1&nofb=1"
@@ -64,20 +71,20 @@ export const RecipeDetails = () => {
         <div className="row d-inline-flex justify-content-start p-0 m-0">
           <div className="col p-0 ms-3">
             <Link to={`/editRecipe/${id}`}>
-              <button type="button" className="btn btn-warning me-3 m-0">
+              <button type="button" className="btn btn-warning me-3 m-0 fs-5">
                 Edit Recipe
               </button>
             </Link>
 
             <Link to="/userHomePage">
-              <button type="button" className="btn btn-primary m-0">
+              <button type="button" className="btn btn-primary me-3 fs-5">
                 Home
               </button>
             </Link>
 
             <button
               type="button"
-              className="btn btn-danger m-2"
+              className="btn btn-danger fs-5"
               onClick={() => actions.deleteRecipe(id)}
             >
               Delete

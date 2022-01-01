@@ -21,7 +21,19 @@ export const AddRecipe = () => {
   return (
     <div className="container p-4 text-center text-light fs-6 m-auto">
       <div>
-        <h1 className="text-center my-3">Add New Recipe</h1>
+        <h1 className="text-center my-3">
+          <img
+            src="https://cdn-icons-png.flaticon.com/512/1027/1027157.png"
+            width="65rem"
+            className="pe-3"
+          />
+          Add New Recipe
+          <img
+            src="https://cdn-icons.flaticon.com/png/512/1027/premium/1027155.png?token=exp=1641003264~hmac=1616bc9f76ee1d2111b6b60d88d60447"
+            width="60rem"
+            className="ps-2"
+          />
+        </h1>
         <form className="text-start">
           <div className="form-group my-2">
             <label>Title:</label>

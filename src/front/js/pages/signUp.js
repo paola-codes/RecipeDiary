@@ -30,44 +30,44 @@ export const SignUp = () => {
 
   return (
     <div className="container mx-auto text-center text-white">
-      <h1 className="m-4">Sign Up Below</h1>
+      <h1 className="m-3 pt-3">Sign Up Below</h1>
       <form className="text-start">
-        <div className="form-group my-1">
+        <div className="form-group my-3 fs-3">
           <label>Full Name</label>
           <input
             type="text"
-            className="form-control"
+            className="form-control fs-4"
             placeholder="Full Name"
             name="full_name"
             onChange={handleChange}
           />
         </div>
-        <div className="form-group my-1">
+        <div className="form-group my-3 fs-3">
           <label>Email</label>
           <input
             type="email"
-            className="form-control"
+            className="form-control fs-4"
             placeholder="Enter email"
             name="email"
             onChange={handleChange}
           />
         </div>
-        <div className="form-group my-1">
+        <div className="form-group my-3 fs-3">
           <label>Password</label>
           <input
             type="password"
-            className="form-control"
+            className="form-control fs-4"
             placeholder="Enter Password"
             name="password"
             onChange={handleChange}
           />
         </div>
       </form>
-      <div className="text-center">
+      <div className="text-start my-4">
         <Link to="/login">
           <button
             type="button"
-            className="btn btn-primary m-4"
+            className="btn btn-primary fs-4"
             onClick={() => addUser(newUser)}
           >
             Save

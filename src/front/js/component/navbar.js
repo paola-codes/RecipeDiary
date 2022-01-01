@@ -34,7 +34,7 @@ export const Navbar = () => {
         <div className="d-flex justify-content-end align-self-center m-0 p-0">
           <div className="dropdown me-3">
             <button
-              className="btn btn-primary dropdown-toggle"
+              className="btn btn-primary dropdown-toggle fs-5"
               type="button"
               id="dropdownMenuButton1"
               data-bs-toggle="dropdown"
@@ -42,7 +42,7 @@ export const Navbar = () => {
               onClick={() => setShowDropdown(!showDropdown)}
             >
               Favorites
-              <span className="badge bg-secondary mx-1">
+              <span className="badge bg-secondary ms-2 me-1">
                 {store.favoritesList.length}
               </span>
             </button>
@@ -63,7 +63,7 @@ export const Navbar = () => {
                 >
                   <Link
                     to={`/recipeDetails/${favorite}`}
-                    className="text-decoration-none text-dark"
+                    className="text-decoration-none text-dark fs-5"
                   >
                     {store.recipeList.map((recipe, index) => {
                       if (recipe.id == store.favoritesList[0]) {
@@ -72,7 +72,7 @@ export const Navbar = () => {
                     })}
                   </Link>
                   <span onClick={() => actions.deleteFavorite(favorite)}>
-                    <strong className="text-danger ms-2">X</strong>
+                    <strong className="text-danger ms-2 fs-5">X</strong>
                   </span>
                 </li>
               ))}
@@ -81,7 +81,7 @@ export const Navbar = () => {
 
           <div className="text-end">
             <Link to="/">
-              <button className="btn btn-danger m-0">Log Out</button>
+              <button className="btn btn-danger m-0 fs-5">Log Out</button>
             </Link>
           </div>
         </div>

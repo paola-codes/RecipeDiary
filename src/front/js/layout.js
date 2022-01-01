@@ -10,6 +10,7 @@ import { UserHomePage } from "./pages/userHomePage";
 import { RecipeDetails } from "./pages/recipeDetails";
 import { AddRecipe } from "./pages/addRecipe";
 import { EditRecipe } from "./pages/editRecipe";
+import { RecipesList } from "./pages/recipesList";
 
 import { Navbar } from "./component/navbar";
 
@@ -39,13 +40,17 @@ const Layout = () => {
               <Navbar />
               <UserHomePage />
             </Route>
-            <Route exact path="/recipeDetails/:id">
-              <Navbar />
-              <RecipeDetails />
-            </Route>
             <Route exact path="/addRecipe">
               <Navbar />
               <AddRecipe />
+            </Route>
+            <Route exact path="/recipesList">
+              <Navbar />
+              <RecipesList />
+            </Route>
+            <Route exact path="/recipeDetails/:id">
+              <Navbar />
+              <RecipeDetails />
             </Route>
             <Route exact path="/editRecipe/:id">
               <Navbar />

@@ -19,7 +19,7 @@ export const AddRecipe = () => {
     setnewRecipe({ ...newRecipe, [e.target.name]: e.target.value });
 
   return (
-    <div className="container p-4 text-center text-light fs-6 m-auto">
+    <div className="container p-4 text-center text-light fs-3 m-auto">
       <div>
         <h1 className="text-center my-3">
           <img
@@ -39,7 +39,7 @@ export const AddRecipe = () => {
             <label>Title:</label>
             <input
               type="text"
-              className="form-control"
+              className="form-control fs-4"
               placeholder="Title"
               name="title"
               onChange={handleChange}
@@ -49,7 +49,7 @@ export const AddRecipe = () => {
             <label>Ingredients:</label>
             <input
               type="text"
-              className="form-control"
+              className="form-control fs-4"
               placeholder="Ingredients"
               name="ingredients"
               onChange={handleChange}
@@ -59,7 +59,7 @@ export const AddRecipe = () => {
             <label>Instructions:</label>
             <input
               type="text"
-              className="form-control"
+              className="form-control fs-4"
               placeholder="Instructions"
               name="instructions"
               onChange={handleChange}
@@ -69,7 +69,7 @@ export const AddRecipe = () => {
             <label>Ocassion:</label>
             <input
               type="text"
-              className="form-control"
+              className="form-control fs-4"
               placeholder="Ocassion"
               name="ocassion"
               onChange={handleChange}
@@ -79,7 +79,7 @@ export const AddRecipe = () => {
             <label>Difficulty:</label>
             <input
               type="text"
-              className="form-control"
+              className="form-control fs-4"
               placeholder="Difficulty"
               name="difficulty"
               onChange={handleChange}
@@ -89,7 +89,7 @@ export const AddRecipe = () => {
             <label>Comments:</label>
             <input
               type="text"
-              className="form-control"
+              className="form-control fs-4"
               placeholder="Comments"
               name="comments"
               onChange={handleChange}
@@ -99,12 +99,20 @@ export const AddRecipe = () => {
         <div className="text-start">
           <Link to="/userHomePage">
             <button
-              className="btn btn-warning btn-lg p-2 m-0 my-3"
+              className="btn btn-warning btn-lg p-2 m-0 me-3 my-3 fs-4"
               onClick={() => {
                 actions.addRecipe(newRecipe);
               }}
             >
               Add Recipe
+            </button>
+          </Link>
+          <Link to="/userHomePage">
+            <button
+              type="button"
+              className="btn btn-primary btn-lg p-2 m-0 my-3 fs-4"
+            >
+              Home
             </button>
           </Link>
         </div>

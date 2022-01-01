@@ -6,7 +6,7 @@ import { useParams } from "react-router-dom";
 export const EditRecipe = () => {
   const { store, actions } = useContext(Context);
 
-  const { id } = useParams();
+  let { id } = useParams();
 
   let recipe = store.recipeList.find((item, index) => {
     if (item.id == id) {
@@ -104,7 +104,7 @@ export const EditRecipe = () => {
             Save Changes
           </button>
         </Link>
-        <Link to="/userHomePage">
+        <Link to="/recipesList">
           <button type="button" className="btn btn-primary p-2 m-0 my-3 fs-4">
             Home
           </button>

@@ -70,15 +70,21 @@ export const RecipeDetails = () => {
 
         <div className="row d-inline-flex justify-content-start p-0 m-0">
           <div className="col p-0 ms-3">
-            <Link to={`/editRecipe/${id}`}>
-              <button type="button" className="btn btn-warning me-3 m-0 fs-5">
-                Edit Recipe
+            <Link to="/recipesList">
+              <button className="btn btn-secondary me-3 fs-5">
+                Recipes List
               </button>
             </Link>
 
             <Link to="/userHomePage">
               <button type="button" className="btn btn-primary me-3 fs-5">
                 Home
+              </button>
+            </Link>
+
+            <Link to={`/editRecipe/${id}`}>
+              <button type="button" className="btn btn-warning me-3 m-0 fs-5">
+                Edit Recipe
               </button>
             </Link>
 

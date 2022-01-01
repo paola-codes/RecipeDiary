@@ -74,6 +74,14 @@ export const RecipeDetails = () => {
                 Home
               </button>
             </Link>
+
+            <button
+              type="button"
+              className="btn btn-danger m-2"
+              onClick={() => actions.deleteRecipe(id)}
+            >
+              Delete
+            </button>
           </div>
         </div>
       </div>

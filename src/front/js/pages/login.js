@@ -23,6 +23,7 @@ export const Login = () => {
     })
       .then((response) => response.json())
       .then((data) => {
+        actions.getRecipes(data.id);
         actions.updateUser(data);
       })
       .catch((err) => {

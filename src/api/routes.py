@@ -142,3 +142,4 @@ def delete_recipe(id):
     recipe_query = Recipe.query.all()
     all_recipes = list(map(lambda x: x.serialize(), recipe_query))
     return jsonify(all_recipes), 200
+

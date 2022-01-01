@@ -13,27 +13,27 @@ const getState = ({ getStore, getActions, setStore }) => {
       },
       logout: () => setStore({ loggedUser: null }),
       /*Recipes*/
-      getRecipes: () => {
-        fetch(`${getStore().backEndUrl}/api/recipe/user/1`)
+      getRecipes: (id) => {
+        fetch(`${getStore().backEndUrl}/api/recipe/user/${id}`)
           .then((res) => res.json())
           .then((data) => setStore({ recipeList: data }))
           .catch((err) => console.error(err));
-      },
-      addRecipe: (newRecipe) => {
-        fetch(`${getStore().backEndUrl}/api/recipe`, {
-          method: "POST",
-          headers: { "Content-Type": "application/json" },
-          body: JSON.stringify(newRecipe),
-        })
-          .then((response) => response.json())
-          .then((data) => setStore({ recipeList: data }))
-          .catch((err) => console.error("Error:", err));
       },
       updateRecipe: (updatedRecipe, id) => {
         fetch(`${getStore().backEndUrl}/api/recipe/${id}`, {
           method: "PUT",
           headers: { "Content-Type": "application/json" },
           body: JSON.stringify(updatedRecipe),
+        })
+          .then((response) => response.json())
+          .then((data) => setStore({ recipeList: data }))
+          .catch((err) => console.error("Error:", err));
+      },
+      addRecipe: (newRecipe) => {
+        fetch(`${getStore().backEndUrl}/api/recipe`, {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify(newRecipe),
         })
           .then((response) => response.json())
           .then((data) => setStore({ recipeList: data }))

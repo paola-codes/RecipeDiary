@@ -6,6 +6,8 @@ import { Context } from "../store/appContext";
 export const UserHomePage = () => {
   const { store, actions } = useContext(Context);
 
+  actions.getRecipes(store.loggedUser.id);
+
   return (
     <div className="container m-5 text-start text-white bg-dark">
       <div className="row">
@@ -44,7 +46,7 @@ export const UserHomePage = () => {
                               Details
                             </button>
                           </Link>
-                          <Link to={`/editRecipe/${item.title}`}>
+                          <Link to={`/editRecipe/${item.id}`}>
                             <button type="button" className="btn btn-dark m-2">
                               Edit Recipe
                             </button>

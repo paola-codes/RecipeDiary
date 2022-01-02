@@ -33,7 +33,9 @@ export const RecipesList = () => {
               placeholder="Filter by Title"
               aria-label="Recipient's username"
               aria-describedby="button-addon2"
-              onChange={(e) => setTitle(e.target.value)}
+              onChange={(e) =>
+                setTitle(e.target.value.toLowerCase().replace(" ", ""))
+              }
             />
           </div>
           {store.recipeList.length > 0
@@ -41,7 +43,7 @@ export const RecipesList = () => {
               ? store.recipeList.map((item, index) => {
                   return (
                     <li
-                      className="list-group-item d-flex flex-column mb-3 border border-warning border-4 rounded-3 mx-auto"
+                      className="list-group-item d-flex flex-column mb-3 border border-warning border-4 rounded-3 m-0"
                       key={index}
                     >
                       <div className="d-flex flex-column align-middle p-0 m-0">

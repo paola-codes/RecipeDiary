@@ -63,16 +63,28 @@ export const Navbar = () => {
                 >
                   <Link
                     to={`/recipeDetails/${favorite}`}
-                    className="text-decoration-none text-dark fs-5"
+                    className="text-decoration-none"
                   >
-                    {store.recipeList.map((recipe, index) => {
-                      if (recipe.id == store.favoritesList[0]) {
-                        return recipe.title;
-                      }
-                    })}
+                    <span
+                      className={`fs-6 ${
+                        isHovering == index ? "text-primary" : "text-dark"
+                      }`}
+                    >
+                      {store.recipeList.map((recipe, index) => {
+                        if (recipe.id == favorite) {
+                          return recipe.title;
+                        }
+                      })}
+                    </span>
                   </Link>
-                  <span onClick={() => actions.deleteFavorite(favorite)}>
-                    <strong className="text-danger ms-2 fs-5">X</strong>
+
+                  <span
+                    onClick={() => actions.deleteFavorite(favorite)}
+                    className={`text-danger ${
+                      isHovering == index ? "" : "hidden"
+                    } ms-2 fs-6`}
+                  >
+                    <i className="fas fa-trash-alt" />
                   </span>
                 </li>
               ))}

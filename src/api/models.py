@@ -32,7 +32,6 @@ class Recipe(db.Model):
     comments = db.Column(db.String(120), unique=False, nullable=True)
     #Foreign Keys
     user_id = db.Column(db.Integer, db.ForeignKey('user.id'), unique=False, nullable=True)
-    image = db.Column(db.String(120), db.ForeignKey('recipe.id'), default="image.jpg")
     
     def __repr__(self):
         return '<Recipe %r>' % self.title
@@ -46,7 +45,6 @@ class Recipe(db.Model):
             "ocassion": self.ocassion,
             "difficulty": self.difficulty,
             "comments": self.comments,
-            "image": self.image,
             "user_id": self.user_id,
         }
 
@@ -60,8 +58,7 @@ class Img(db.Model):
     comments = db.Column(db.String(120), unique=False, nullable=True)
     #Foreign Keys
     user_id = db.Column(db.Integer, db.ForeignKey('user.id'), unique=False, nullable=True)
-    image = db.Column(db.String(120), db.ForeignKey('recipe.id'), default="image.jpg")
-    
+
     def __repr__(self):
         return '<Recipe %r>' % self.title
 
@@ -74,6 +71,5 @@ class Img(db.Model):
             "ocassion": self.ocassion,
             "difficulty": self.difficulty,
             "comments": self.comments,
-            "image": self.image,
             "user_id": self.user_id,
         }

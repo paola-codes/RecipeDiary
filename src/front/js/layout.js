@@ -14,6 +14,7 @@ import { EditRecipe } from "./pages/editRecipe";
 import { RecipesList } from "./pages/recipesList";
 import { Profile } from "./pages/profile";
 import { EditProfile } from "./pages/editProfile";
+import { FavoritesList } from "./pages/favoritesList";
 
 import { Navbar } from "./component/navbar";
 import { Footer } from "./component/footer";
@@ -76,6 +77,11 @@ const Layout = () => {
             <Route exact path="/editProfile">
               <Navbar />
               <EditProfile />
+              <Footer />
+            </Route>
+            <Route exact path="/favoritesList">
+              <Navbar />
+              <FavoritesList />
               <Footer />
             </Route>
             <Route>

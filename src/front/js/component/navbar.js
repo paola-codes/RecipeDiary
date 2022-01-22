@@ -1,6 +1,7 @@
 import React, { useState, useContext } from "react";
 import { Link } from "react-router-dom";
 import { Context } from "../store/appContext";
+import Cook_Book from "../../img/cook_book.png";
 
 export const Navbar = () => {
   const { store, actions } = useContext(Context);
@@ -18,17 +19,13 @@ export const Navbar = () => {
       <div className="container-fluid d-flex px-3">
         <div className="d-flex justify-content-start align-self-center m-0 p-0">
           <a className="navbar-brand" href="#">
-            <img
-              src="https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fimage.flaticon.com%2Ficons%2Fpng%2F512%2F266%2F266662.png&f=1&nofb=1"
-              height="35rem"
-              className="p-0 m-0"
-            />
+            <img src={Cook_Book} width="40" className="p-0 m-0" />
           </a>
           <Link
             to="/userHomePage"
             className="text-decoration-none text-dark fs-3"
           >
-            <strong>My Online Recipe Book</strong>
+            <strong>RecipeDiary</strong>
           </Link>
         </div>
         <div className="d-flex justify-content-end align-self-center m-0 p-0">

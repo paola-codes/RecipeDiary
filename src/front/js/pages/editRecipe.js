@@ -2,6 +2,8 @@ import React, { useContext, useState } from "react";
 import { Link } from "react-router-dom";
 import { Context } from "../store/appContext";
 import { useParams } from "react-router-dom";
+import Ingredients from "../../img/ingredients.png";
+import Milk from "../../img/milk.png";
 
 export const EditRecipe = () => {
   const { store, actions } = useContext(Context);
@@ -23,17 +25,9 @@ export const EditRecipe = () => {
   return (
     <div className="container py-4 px-3 text-center text-light fs-4 my-1">
       <h1 className="text-center my-3">
-        <img
-          src="https://cdn-icons.flaticon.com/png/512/1027/premium/1027141.png?token=exp=1641003276~hmac=584224e25536f1f4131f55af7540f812"
-          width="63rem"
-          className="pe-2"
-        />
+        <img src={Ingredients} width="65" className="pe-2" />
         Edit Recipe Information
-        <img
-          src="https://cdn-icons.flaticon.com/png/512/1027/premium/1027176.png?token=exp=1641003631~hmac=36399b51788698d7d688e4c006ae1772"
-          width="65rem"
-          className="ps-2"
-        />
+        <img src={Milk} width="65" className="ps-2" />
       </h1>
 
       <form className="text-start">

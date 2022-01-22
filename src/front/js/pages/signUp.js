@@ -4,6 +4,8 @@ import { useState } from "react";
 import { Link } from "react-router-dom";
 import { Context } from "../store/appContext";
 import { useContext } from "react";
+import Fish from "../../img/fish.png";
+import CuttingBoard from "../../img/cutting_board.png";
 
 export const SignUp = () => {
   const { actions, store } = useContext(Context);
@@ -30,7 +32,11 @@ export const SignUp = () => {
 
   return (
     <div className="container mx-auto text-center text-white">
-      <h1 className="m-3 pt-3">Sign Up Below</h1>
+      <h1 className="m-3 pt-3">
+        <img src={Fish} width="65" className="pe-3" />
+        Sign Up Below
+        <img src={CuttingBoard} width="65" className="pe-3" />
+      </h1>
       <form className="text-start">
         <div className="form-group my-3 fs-3">
           <label>Full Name</label>

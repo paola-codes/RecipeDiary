@@ -2,6 +2,8 @@ import React, { useContext } from "react";
 import { Link } from "react-router-dom";
 import { useParams } from "react-router-dom";
 import { Context } from "../store/appContext";
+import Veggies from "../../img/veggies.png";
+import Oils from "../../img/oils.png";
 
 export const RecipeDetails = () => {
   const { store, actions } = useContext(Context);
@@ -19,20 +21,10 @@ export const RecipeDetails = () => {
       <div className="container-fluid bg-light p-4 m-0">
         <div className="row p-0 m-0 mb-3 d-flex d-inline-column flex-wrap">
           <h1 className="ms-3 p-0">
-            <img
-              src="https://cdn-icons-png.flaticon.com/512/3058/3058973.png"
-              width="65rem"
-              className="pe-2"
-            />
+            <img src={Veggies} width="65" className="pe-2" />
             {recipe.title}
+            <img src={Oils} width="65" alt="..." />
           </h1>
-          <div className="col-6 p-0 m-0 ms-3 d-flex flex-column">
-            <img
-              src="https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fi.pinimg.com%2Foriginals%2F60%2F74%2F93%2F6074938bb69c862964aae1ec69ef95fc.jpg&f=1&nofb=1"
-              className="flex-shrink-2 mb-3"
-              alt="..."
-            />
-          </div>
 
           <div className="col p-0 d-flex align-content-start flex-wrap">
             <div className="col mx-3 mb-3 p-2 bg-primary bg-opacity-25">

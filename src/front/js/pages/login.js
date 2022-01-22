@@ -3,6 +3,8 @@ import { useState } from "react";
 import { Context } from "../store/appContext";
 import { useContext } from "react";
 import { Link } from "react-router-dom";
+import Rice from "../../img/rice.png";
+import Spices from "../../img/spices.png";
 
 export const Login = () => {
   const { actions, store } = useContext(Context);
@@ -34,7 +36,11 @@ export const Login = () => {
 
   return (
     <div className="container mx-auto text-center text-white">
-      <h1 className="m-3 pt-3">Login</h1>
+      <h1 className="m-3 pt-3">
+        <img src={Spices} width="65" className="pe-3" />
+        Login
+        <img src={Rice} width="65" className="ps-3" />
+      </h1>
       <form className="text-start">
         <div className="form-group my-3 fs-3">
           <label>Email</label>

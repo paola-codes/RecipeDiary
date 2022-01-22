@@ -1,28 +1,20 @@
 import React, { useContext, useState } from "react";
 import { Link } from "react-router-dom";
 import { Context } from "../store/appContext";
+import Pasta from "../../img/pasta.png";
+import Cookies from "../../img/cookies.png";
 
 export const RecipesList = () => {
   const { store, actions } = useContext(Context);
-
-  console.log(store.loggedUser.id);
 
   const [title, setTitle] = useState("");
 
   return (
     <div className="container py-4 px-3 text-center text-light fs-4 my-1">
       <h1 className="py-3 pb-4 px-0">
-        <img
-          src="https://cdn-icons.flaticon.com/png/512/1027/premium/1027168.png?token=exp=1641001763~hmac=811a330c6e386ece218f62540bbf16e2"
-          width="65rem"
-          className="pe-3"
-        />
-        My Recipes{" "}
-        <img
-          src="https://cdn-icons.flaticon.com/png/512/1027/premium/1027179.png?token=exp=1641002022~hmac=4feab4c587e10cd044c45873f9b62e08"
-          width="65rem"
-          className="ps-2"
-        />
+        <img src={Pasta} width="65" className="pe-3" />
+        My Recipes
+        <img src={Cookies} width="65" className="ps-2" />
       </h1>
       <div style={{ width: "85%" }} className="m-auto p-0">
         <ul className="list-group position-relative d-flex justify-content-center">

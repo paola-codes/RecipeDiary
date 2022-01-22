@@ -5,21 +5,21 @@ const getState = ({ getStore, getActions, setStore }) => {
       loggedUser: {},
       recipeList: [],
       favoritesList: [],
-      filteredRecipes: [],
     },
     actions: {
-      /*User Login Fetches and Actions*/
+      /*User Login & LogOut--------------------------------------------------*/
       updateUser: (loginInfo) => {
         setStore({ loggedUser: loginInfo });
       },
       logout: () => setStore({ loggedUser: null }),
-      /*Recipe Fetches and Actions (Add, Delete, Update, Filter)*/
+      /*Get Recipes----------------------------------------------------------*/
       getRecipes: (id) => {
         fetch(`${getStore().backEndUrl}/api/recipe/user/${id}`)
           .then((res) => res.json())
           .then((data) => setStore({ recipeList: data }))
           .catch((err) => console.error(err));
       },
+      /*Update Recipe---------------------------------------------------------*/
       updateRecipe: (updatedRecipe, id) => {
         fetch(`${getStore().backEndUrl}/api/recipe/${id}`, {
           method: "PUT",
@@ -30,6 +30,7 @@ const getState = ({ getStore, getActions, setStore }) => {
           .then((data) => setStore({ recipeList: data }))
           .catch((err) => console.error("Error:", err));
       },
+      /*Add Recipe------------------------------------------------------------*/
       addRecipe: (newRecipe) => {
         fetch(`${getStore().backEndUrl}/api/recipe`, {
           method: "POST",
@@ -40,6 +41,7 @@ const getState = ({ getStore, getActions, setStore }) => {
           .then((data) => setStore({ recipeList: data }))
           .catch((err) => console.error("Error:", err));
       },
+      /*Delete Recipes--------------------------------------------------------*/
       deleteRecipe: (id) => {
         fetch(`${getStore().backEndUrl}/api/recipe/${id}`, {
           method: "DELETE",
@@ -48,12 +50,7 @@ const getState = ({ getStore, getActions, setStore }) => {
           .then((data) => setStore({ recipeList: data }))
           .catch((err) => console.error("Error:", err));
       },
-      filterByTitle: (title) => {
-        let filterTitle = getStore().recipeList;
-        filterRecipes = filterTitle.filter((item) => title !== item);
-        setStore({ filteredRecipes: filterRecipes });
-      },
-      /*Favorite Recipes Fetches and Actions*/
+      /*Add Favorite-----------------------------------------------------------*/
       addFavorites: (id) => {
         let favsList = getStore().favoritesList;
         if (!getStore().favoritesList.find((item) => item == id)) {
@@ -61,11 +58,23 @@ const getState = ({ getStore, getActions, setStore }) => {
         }
         setStore({ favoritesList: favsList });
       },
+      /*Delete Favorite---------------------------------------------------------*/
       deleteFavorite: (id) => {
         let filterFavorites = getStore().favoritesList.filter(
           (favoriteToRemove, index) => id != favoriteToRemove
         );
         setStore({ favoritesList: filterFavorites });
+      },
+      /*Update User Profile------------------------------------------------------*/
+      updateUserProfile: (updatedProfile, id) => {
+        fetch(`${getStore().backEndUrl}/api/user/${id}`, {
+          method: "PUT",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify(updatedProfile),
+        })
+          .then((response) => response.json())
+          .then((data) => setStore({ loggedUser: data }))
+          .catch((err) => console.error("Error:", err));
       },
     },
   };

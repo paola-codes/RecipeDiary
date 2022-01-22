@@ -21,7 +21,7 @@ export const AddRecipe = () => {
     setnewRecipe({ ...newRecipe, [e.target.name]: e.target.value });
 
   return (
-    <div className="container p-4 text-center text-light fs-3 m-auto">
+    <div className="container p-4 mx-0 text-center text-light fs-3 m-auto">
       <div>
         <h1 className="text-center my-3">
           <img src={Cauldron} width="65" className="pe-3" />
@@ -90,10 +90,10 @@ export const AddRecipe = () => {
             />
           </div>
         </form>
-        <div className="text-start">
+        <div className="text-center mt-4">
           <Link to="/userHomePage">
             <button
-              className="btn btn-warning btn-lg p-2 m-0 me-3 my-3 fs-4"
+              className="btn btn-warning p-2 m-2 fs-4"
               onClick={() => {
                 actions.addRecipe(newRecipe);
               }}
@@ -102,10 +102,7 @@ export const AddRecipe = () => {
             </button>
           </Link>
           <Link to="/userHomePage">
-            <button
-              type="button"
-              className="btn btn-primary btn-lg p-2 m-0 my-3 fs-4"
-            >
+            <button type="button" className="btn btn-primary p-2 m-2 fs-4">
               Home
             </button>
           </Link>

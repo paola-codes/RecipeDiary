@@ -18,6 +18,8 @@ def get_users():
         all_users
     ), 200
 
+#User Methods--------------------------------------------------------------------
+
 #Get Specific User
 @api.route('/user/<id>', methods=['GET'])
 def get_specific_user(id):
@@ -61,7 +63,28 @@ def user_login():
         user.serialize()
     ), 200
 
-#List of Recipes of certain User
+#Update User Profile
+@api.route('/user/<id>', methods=['PUT'])
+def update_user_profile(id):
+    
+    my_profile = User.query.get(id)
+
+    body = request.get_json()
+
+    my_profile.full_name = body["full_name"]
+    my_profile.email = body["email"]
+
+    db.session.commit()
+
+    profile_query = User.query.get(id)
+
+    if profile_query.full_name == body["full_name"]:
+        return jsonify(profile_query.serialize()), 200
+    raise APIException("Update Failed")
+
+#Recipe Methods--------------------------------------------------------------------
+
+#Get User Recipes
 @api.route('/recipe/user/<user_id>', methods=['GET'])
 def get_recipes(user_id):
 
@@ -72,7 +95,7 @@ def get_recipes(user_id):
         all_recipes
     ), 200
 
-#Add New Recipe Based on User ID
+#Add New Recipe
 @api.route('/recipe', methods=['POST'])
 def add_recipe():
 

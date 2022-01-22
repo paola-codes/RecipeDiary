@@ -9,7 +9,7 @@ export const Home = () => {
   const { store, actions } = useContext(Context);
 
   return (
-    <div className="text-center mt-5 text-white">
+    <div className="text-center mt-5 mx-0 text-white">
       <h1 className="mb-5 pt-3">
         <img src={ChefHat} width="65" className="pe-3" />
         Welcome to RecipeDiary

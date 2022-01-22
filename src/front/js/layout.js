@@ -4,6 +4,7 @@ import ScrollToTop from "./component/scrollToTop";
 
 import { SignUp } from "./pages/signUp";
 import { Login } from "./pages/login";
+import { LoginRequired } from "./pages/loginRequired";
 
 import { Home } from "./pages/home";
 import { UserHomePage } from "./pages/userHomePage";
@@ -11,8 +12,11 @@ import { RecipeDetails } from "./pages/recipeDetails";
 import { AddRecipe } from "./pages/addRecipe";
 import { EditRecipe } from "./pages/editRecipe";
 import { RecipesList } from "./pages/recipesList";
+import { Profile } from "./pages/profile";
+import { EditProfile } from "./pages/editProfile";
 
 import { Navbar } from "./component/navbar";
+import { Footer } from "./component/footer";
 
 import injectContext from "./store/appContext";
 
@@ -36,25 +40,43 @@ const Layout = () => {
             <Route exact path="/login">
               <Login />
             </Route>
+            <Route exact path="/loginRequired">
+              <LoginRequired />
+            </Route>
             <Route exact path="/userHomePage">
               <Navbar />
               <UserHomePage />
+              <Footer />
             </Route>
             <Route exact path="/addRecipe">
               <Navbar />
               <AddRecipe />
+              <Footer />
             </Route>
             <Route exact path="/recipesList">
               <Navbar />
               <RecipesList />
+              <Footer />
             </Route>
             <Route exact path="/recipeDetails/:id">
               <Navbar />
               <RecipeDetails />
+              <Footer />
             </Route>
             <Route exact path="/editRecipe/:id">
               <Navbar />
               <EditRecipe />
+              <Footer />
+            </Route>
+            <Route exact path="/profile">
+              <Navbar />
+              <Profile />
+              <Footer />
+            </Route>
+            <Route exact path="/editProfile">
+              <Navbar />
+              <EditProfile />
+              <Footer />
             </Route>
             <Route>
               <h1>Not found!</h1>

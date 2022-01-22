@@ -5,8 +5,10 @@ import { Context } from "../store/appContext";
 import Rice from "../../img/rice.png";
 import HotPot from "../../img/hot_pot.png";
 import CuteHat from "../../img/cute_hat.png";
-import CookBook from "../../img/cook_book2.png";
-import Tools from "../../img/tools.png";
+import Pot2 from "../../img/pot2.png";
+import Veggies from "../../img/veggies.png";
+import Bread from "../../img/bread.png";
+import Mixer from "../../img/mixer.png";
 
 export const UserHomePage = () => {
   const { store, actions } = useContext(Context);
@@ -14,7 +16,7 @@ export const UserHomePage = () => {
   actions.getRecipes(store.loggedUser.id);
 
   return (
-    <div className="container m-5 text-center text-white bg-dark">
+    <div className="container my-5 mx-0 text-center text-white bg-dark">
       <div className="row">
         <h1 className="pb-3 px-0 m-0">
           <img src={CuteHat} width="65" className="pe-2" />
@@ -30,7 +32,7 @@ export const UserHomePage = () => {
         </div>
 
         <div className="py-3 px-0">
-          <img src={CookBook} width="65" className="pe-3" />
+          <img src={Pot2} width="65" className="pe-3" />
           <Link to="/recipesList">
             <button
               className="btn btn-warning btn-lg fs-4"
@@ -41,18 +43,16 @@ export const UserHomePage = () => {
               Recipes List
             </button>
           </Link>
-          <img src={Tools} width="65" className="ps-3" />
+          <img src={Veggies} width="65" className="ps-3" />
         </div>
-      </div>
-      <div className="mx-0 mt-5 px-0">
-        Icons made by{" "}
-        <a href="https://www.freepik.com" title="Freepik">
-          Freepik
-        </a>{" "}
-        from{" "}
-        <a href="https://www.flaticon.com/" title="Flaticon">
-          www.flaticon.com
-        </a>
+
+        <div className="py-3 px-0">
+          <img src={Bread} width="65" className="pe-3" />
+          <Link to="/profile">
+            <button className="btn btn-info btn-lg fs-4">Profile</button>
+          </Link>
+          <img src={Mixer} width="65" className="ps-3" />
+        </div>
       </div>
     </div>
   );

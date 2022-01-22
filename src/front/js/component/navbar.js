@@ -15,7 +15,7 @@ export const Navbar = () => {
   }
 
   return (
-    <nav className="navbar navbar-expand-lg navbar-light bg-light bg-opacity-75">
+    <nav className="navbar navbar-expand-lg navbar-light bg-light">
       <div className="container-fluid d-flex px-3">
         <div className="d-flex justify-content-start align-self-center m-0 p-0">
           <a className="navbar-brand" href="#">
@@ -98,11 +98,3 @@ export const Navbar = () => {
     </nav>
   );
 };
-
-/* 
-
-className={`text-dark ${
-  isHovering == index ? "" : "hidden"
-  } ps-2`}
-
-*/

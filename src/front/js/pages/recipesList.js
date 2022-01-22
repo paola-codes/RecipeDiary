@@ -10,7 +10,7 @@ export const RecipesList = () => {
   const [title, setTitle] = useState("");
 
   return (
-    <div className="container py-4 px-3 text-center text-light fs-4 my-1">
+    <div className="container py-4 px-3 mx-0 text-center text-light fs-4 my-1">
       <h1 className="py-3 pb-4 px-0">
         <img src={Pasta} width="65" className="pe-3" />
         My Recipes
@@ -100,7 +100,7 @@ export const RecipesList = () => {
                             <strong>Instructions:</strong> {item.instructions}
                           </h4>
                           <span className="p-0 m-0">
-                            <div className="d-inline-flex justify-content-between flex-wrap p-0 m-0 align-middle">
+                            <div className="d-inline-flex justify-content-center flex-wrap p-0 m-0 align-middle">
                               <Link to={`/recipeDetails/${item.id}`}>
                                 <button className="btn btn-primary m-2 fs-5">
                                   Details
@@ -133,9 +133,9 @@ export const RecipesList = () => {
                   })
             : "Loading..."}
         </ul>
-        <div className="text-start">
+        <div className="text-center">
           <Link to="/userHomePage">
-            <button type="button" className="btn btn-primary p-2 m-0 my-3 fs-4">
+            <button type="button" className="btn btn-primary p-2 m-0 my-2 fs-4">
               Home
             </button>
           </Link>

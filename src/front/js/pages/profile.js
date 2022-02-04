@@ -12,7 +12,7 @@ export const Profile = () => {
       </h1>
 
       <div className="row d-flex justify-content-center mb-3">
-        <div className="col-6 mx-4 text-start bg-light text-dark p-4">
+        <div className="col-8 mx-4 text-start bg-light text-dark p-4">
           <h5>
             <strong>Full Name: </strong>
             {store.loggedUser.full_name}
@@ -26,12 +26,14 @@ export const Profile = () => {
       <div className="row d-inline-flex justify-content-center">
         <div className="col-8 p-0">
           <Link to="/editProfile">
-            <button className="btn btn-warning p-2 my-2">Edit Profile</button>
+            <button className="btn btn-warning p-2 my-2 fs-4">
+              Edit Profile
+            </button>
           </Link>
         </div>
         <div className="col-4 p-0">
           <Link to="/userHomePage">
-            <button className="btn btn-primary p-2 ms-2 my-2">Home</button>
+            <button className="btn btn-primary p-2 ms-2 my-2 fs-4">Home</button>
           </Link>
         </div>
       </div>

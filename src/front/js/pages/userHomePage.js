@@ -9,6 +9,8 @@ import Pot2 from "../../img/pot2.png";
 import Veggies from "../../img/veggies.png";
 import Bread from "../../img/bread.png";
 import Mixer from "../../img/mixer.png";
+import Cake from "../../img/cake_slice.png";
+import IceCream from "../../img/ice_cream.png";
 
 export const UserHomePage = () => {
   const { store, actions } = useContext(Context);
@@ -45,8 +47,8 @@ export const UserHomePage = () => {
         </div>
 
         <div className="py-3 px-0">
-          <img src={Pot2} width="65" className="pe-3" />
-          <Link to="/recipesList">
+          <img src={Cake} width="65" className="pe-3" />
+          <Link to="/favoritesList">
             <button
               className="btn btn-success btn-lg fs-4"
               onClick={() => {
@@ -56,7 +58,7 @@ export const UserHomePage = () => {
               Favorites
             </button>
           </Link>
-          <img src={Veggies} width="65" className="ps-3" />
+          <img src={IceCream} width="65" className="ps-3" />
         </div>
 
         <div className="py-3 px-0">

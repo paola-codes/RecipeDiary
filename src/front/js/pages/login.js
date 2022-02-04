@@ -1,7 +1,7 @@
 import React, { useState, useContext } from "react";
 import { PropTypes } from "prop-types";
 import { Context } from "../store/appContext";
-import { Link } from "react-router-dom";
+import { Link, Redirect } from "react-router-dom";
 import Rice from "../../img/rice.png";
 import Spices from "../../img/spices.png";
 
@@ -30,6 +30,7 @@ export const Login = () => {
       .catch((err) => {
         console.error("Incorrect Information", err);
         alert("Incorrect Information");
+        return <Redirect to="/loginRequired" />;
       });
   };
 

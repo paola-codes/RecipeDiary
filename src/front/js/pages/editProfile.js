@@ -48,7 +48,7 @@ export const EditProfile = () => {
         <div className="col-8 p-0">
           <Link to="/profile">
             <button
-              className="btn btn-primary me-3 mb-3 m-0 fs-5"
+              className="btn btn-primary me-3 mb-3 m-0 fs-4"
               onClick={() => {
                 actions.updateUserProfile(updatedProfile, store.loggedUser.id);
               }}
@@ -59,7 +59,7 @@ export const EditProfile = () => {
         </div>
         <div className="col-4 p-0">
           <Link to="/userHomePage">
-            <button className="btn btn-warning me-3 m-0 fs-5">Home</button>
+            <button className="btn btn-warning me-3 m-0 fs-4">Home</button>
           </Link>
         </div>
       </div>

@@ -12,7 +12,9 @@ export const RecipesList = () => {
     actions.getRecipes(store.loggedUser.id);
   }, []);
 
-  let yesFavoriteStatus = { favorite: "yes" };
+  let yesFavoriteStatus = { favorite: "Yes" };
+
+  let noFavoriteStatus = { favorite: "No" };
 
   useEffect(() => {
     const qs = queryString.parse(location.hash);
@@ -32,6 +34,12 @@ export const RecipesList = () => {
       } else if (
         item.ingredients.toLowerCase().includes(keyword.toLowerCase())
       ) {
+        return item;
+      } else if (
+        item.difficulty.toLowerCase().includes(keyword.toLowerCase())
+      ) {
+        return item;
+      } else if (item.ocassion.toLowerCase().includes(keyword.toLowerCase())) {
         return item;
       }
     });
@@ -82,6 +90,15 @@ export const RecipesList = () => {
                       <h4 className="mx-2 m-1 text-start">
                         <strong>Instructions:</strong> {item.instructions}
                       </h4>
+                      <h4 className="mx-2 m-1 text-start">
+                        <strong>Ocassion:</strong> {item.ocassion}
+                      </h4>
+                      <h4 className="mx-2 m-1 text-start">
+                        <strong>Difficulty:</strong> {item.difficulty}
+                      </h4>
+                      <h4 className="mx-2 m-1 text-start">
+                        <strong>Favorite:</strong> {item.favorite}
+                      </h4>
                       <span className="p-0 m-0">
                         <div className="d-inline-flex justify-content-between flex-wrap p-0 m-0 align-middle">
                           <Link to={`/recipeDetails/${item.id}`}>
@@ -94,15 +111,36 @@ export const RecipesList = () => {
                               Edit
                             </button>
                           </Link>
-                          <button
-                            href="#"
-                            className="btn btn-warning m-2 fs-5"
-                            onClick={() =>
-                              actions.yesFavorite(yesFavoriteStatus, item.id)
-                            }
-                          >
-                            <i className="fas fa-heart" />
-                          </button>
+                          {item.favorite == "Yes" ? (
+                            <Link to="/userHomePage">
+                              <button
+                                href="#"
+                                className="btn btn-warning m-2 fs-5 text-danger"
+                                onClick={() => {
+                                  actions.noFavorite(noFavoriteStatus, item.id);
+                                  actions.getRecipes(store.loggedUser.id);
+                                }}
+                              >
+                                Unfavorite
+                              </button>
+                            </Link>
+                          ) : (
+                            <Link to="/userHomePage">
+                              <button
+                                href="#"
+                                className="btn btn-warning m-2 fs-5"
+                                onClick={() => {
+                                  actions.yesFavorite(
+                                    yesFavoriteStatus,
+                                    item.id
+                                  );
+                                  actions.getRecipes(store.loggedUser.id);
+                                }}
+                              >
+                                Favorite
+                              </button>
+                            </Link>
+                          )}
                           <button
                             type="button"
                             className="btn btn-danger m-2 fs-5"

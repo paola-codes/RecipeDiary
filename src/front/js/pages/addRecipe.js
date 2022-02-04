@@ -1,6 +1,7 @@
 import React, { useState, useContext } from "react";
 import { Link } from "react-router-dom";
 import { Context } from "../store/appContext";
+import { PropTypes } from "prop-types";
 import Sauces from "../../img/sauces2.png";
 import Cauldron from "../../img/cauldron.png";
 
@@ -39,21 +40,27 @@ export const AddRecipe = () => {
               onChange={handleChange}
             />
           </div>
-          <div className="form-group my-2">
-            <label>Ingredients:</label>
-            <input
-              type="text"
+          <div className="my-2">
+            <label htmlFor="exampleFormControlTextarea1" className="form-label">
+              Ingredients:
+            </label>
+            <textarea
               className="form-control fs-4"
+              id="exampleFormControlTextarea1"
+              rows="3"
               placeholder="Ingredients"
               name="ingredients"
               onChange={handleChange}
             />
           </div>
-          <div className="form-group my-2">
-            <label>Instructions:</label>
-            <input
-              type="text"
+          <div className="my-2">
+            <label htmlFor="exampleFormControlTextarea1" className="form-label">
+              Instructions:
+            </label>
+            <textarea
               className="form-control fs-4"
+              id="exampleFormControlTextarea1"
+              rows="3"
               placeholder="Instructions"
               name="instructions"
               onChange={handleChange}
@@ -69,21 +76,31 @@ export const AddRecipe = () => {
               onChange={handleChange}
             />
           </div>
-          <div className="form-group my-2">
+          <div className="form-group my-1 fs-3">
             <label>Difficulty:</label>
-            <input
-              type="text"
-              className="form-control fs-4"
-              placeholder="Difficulty"
-              name="difficulty"
-              onChange={handleChange}
-            />
+            <label className="list-group-item d-flex align-items-start p-0 m-0">
+              <select
+                id="inputState"
+                className="form-select m-0"
+                name="difficulty"
+                onChange={handleChange}
+                defaultValue={"DEFAULT"}
+              >
+                <option value="DEFAULT">Difficulty</option>
+                <option value="Low">Low</option>
+                <option value="Medium">Medium</option>
+                <option value="Hard">Hard</option>
+              </select>
+            </label>
           </div>
-          <div className="form-group my-2">
-            <label>Comments:</label>
-            <input
-              type="text"
+          <div className="my-2">
+            <label htmlFor="exampleFormControlTextarea1" className="form-label">
+              Comments:
+            </label>
+            <textarea
               className="form-control fs-4"
+              id="exampleFormControlTextarea1"
+              rows="3"
               placeholder="Comments"
               name="comments"
               onChange={handleChange}

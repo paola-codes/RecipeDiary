@@ -14,10 +14,10 @@ export const MyNavbar = () => {
           <img
             alt=""
             src={Cook_Book}
-            width="40"
+            width="35"
             className="d-inline-flex align-top p-0 me-1 mt-1 m-0 text-dark"
           />
-          <h3 className="d-inline-flex align-center p-0 m-0">
+          <h3 className="d-inline-flex align-center p-0 pt-1 m-0">
             <strong>RecipeDiary</strong>
           </h3>
         </Navbar.Brand>
@@ -28,32 +28,46 @@ export const MyNavbar = () => {
               to="/userHomePage"
               className="text-decoration-none text-dark me-2"
             >
-              <Nav.Item>Home</Nav.Item>
+              <Nav.Item>
+                <h5>
+                  <strong>Home</strong>
+                </h5>
+              </Nav.Item>
             </Link>
             <Link to="/profile" className="text-decoration-none text-dark me-2">
-              <Nav.Item>Profile</Nav.Item>
+              <Nav.Item>
+                <h5>
+                  <strong>Profile</strong>
+                </h5>
+              </Nav.Item>
             </Link>
             <Link
               to="/recipesList"
               className="text-decoration-none text-dark me-2"
             >
-              <Nav.Item>Recipes</Nav.Item>
+              <Nav.Item>
+                <h5>
+                  <strong>Recipes</strong>
+                </h5>
+              </Nav.Item>
             </Link>
             <Link
               to="/favoritesList"
               className="text-decoration-none text-dark me-2"
             >
-              <Nav.Item>Favorites</Nav.Item>
-            </Link>
-            <Link
-              to="/addRecipe"
-              className="text-decoration-none text-dark me-2"
-            >
-              <Nav.Item>Add Recipe</Nav.Item>
+              <Nav.Item>
+                <h5>
+                  <strong>Favorites</strong>
+                </h5>
+              </Nav.Item>
             </Link>
             <Link to="/" className="text-decoration-none text-dark me-2">
               <Nav.Item>
-                <span onClick={() => actions.logOut()}>Log Out</span>
+                <span onClick={() => actions.logOut()}>
+                  <h5>
+                    <strong>Logout</strong>
+                  </h5>
+                </span>
               </Nav.Item>
             </Link>
           </Nav>

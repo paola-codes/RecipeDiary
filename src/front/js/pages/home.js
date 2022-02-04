@@ -1,9 +1,9 @@
 import React, { useContext } from "react";
 import { Context } from "../store/appContext";
-import "../../styles/home.css";
 import { Link } from "react-router-dom";
 import ChefHat from "../../img/chef_hat.png";
 import OpenBook from "../../img/open_recipe.png";
+import "../../styles/home.css";
 
 export const Home = () => {
   const { store, actions } = useContext(Context);

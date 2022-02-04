@@ -36,29 +36,32 @@ export const EditRecipe = () => {
           <input
             type="text"
             className="form-control fs-4"
-            placeholder="Edit Title"
             name="title"
             onChange={handleChange}
             value={updatedRecipe.title}
           />
         </div>
-        <div className="form-group my-1 fs-3">
-          <label>Ingredients:</label>
-          <input
-            type="text"
+        <div className="my-1 fs-3">
+          <label htmlFor="exampleFormControlTextarea1" className="form-label">
+            Ingredients:
+          </label>
+          <textarea
             className="form-control fs-4"
-            placeholder="Edit Ingredients"
+            id="exampleFormControlTextarea1"
+            rows="3"
             name="ingredients"
             onChange={handleChange}
             value={updatedRecipe.ingredients}
           />
         </div>
-        <div className="form-group my-1 fs-3">
-          <label>Instructions:</label>
-          <input
-            type="text"
+        <div className="my-1 fs-3">
+          <label htmlFor="exampleFormControlTextarea1" className="form-label">
+            Instructions:
+          </label>
+          <textarea
             className="form-control fs-4"
-            placeholder="Edit Instructions"
+            id="exampleFormControlTextarea1"
+            rows="3"
             name="instructions"
             onChange={handleChange}
             value={updatedRecipe.instructions}
@@ -69,25 +72,43 @@ export const EditRecipe = () => {
           <input
             type="text"
             className="form-control fs-4"
-            placeholder="Edit Ocassion"
             name="ocassion"
             onChange={handleChange}
             value={updatedRecipe.ocassion}
           />
         </div>
         <div className="form-group my-1 fs-3">
-          <label>Comments:</label>
-          <input
-            type="text"
+          <label>Difficulty:</label>
+          <label className="list-group-item d-flex align-items-start p-0 m-0">
+            <select
+              id="inputState"
+              className="form-select m-0"
+              name="difficulty"
+              onChange={handleChange}
+              defaultValue={"DEFAULT"}
+            >
+              <option value="DEFAULT">{updatedRecipe.difficulty}</option>
+              <option value="Low">Low</option>
+              <option value="Medium">Medium</option>
+              <option value="Hard">Hard</option>
+            </select>
+          </label>
+        </div>
+        <div className="my-1 fs-3">
+          <label htmlFor="exampleFormControlTextarea1" className="form-label">
+            Comments:
+          </label>
+          <textarea
             className="form-control fs-4"
-            placeholder="Edit Comments"
+            id="exampleFormControlTextarea1"
+            rows="3"
             name="comments"
             onChange={handleChange}
             value={updatedRecipe.comments}
           />
         </div>
         <div className="form-group my-1 fs-3">
-          <label>Favorite</label>
+          <label>Favorite:</label>
           <label className="list-group-item d-flex align-items-start p-0 m-0">
             <select
               id="inputState"

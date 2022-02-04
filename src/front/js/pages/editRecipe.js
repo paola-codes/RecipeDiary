@@ -1,7 +1,7 @@
 import React, { useContext, useState } from "react";
 import { Link } from "react-router-dom";
-import { Context } from "../store/appContext";
 import { useParams } from "react-router-dom";
+import { Context } from "../store/appContext";
 import Ingredients from "../../img/ingredients.png";
 import Milk from "../../img/milk.png";
 
@@ -86,6 +86,22 @@ export const EditRecipe = () => {
             value={updatedRecipe.comments}
           />
         </div>
+        <div className="form-group my-1 fs-3">
+          <label>Favorite</label>
+          <label className="list-group-item d-flex align-items-start p-0 m-0">
+            <select
+              id="inputState"
+              className="form-select m-0"
+              name="favorite"
+              onChange={handleChange}
+              defaultValue={"DEFAULT"}
+            >
+              <option value="DEFAULT">{updatedRecipe.favorite}</option>
+              <option value="Yes">Yes</option>
+              <option value="No">No</option>
+            </select>
+          </label>
+        </div>
       </form>
       <div className="text-center mt-2">
         <Link to="/userHomePage">
@@ -93,6 +109,7 @@ export const EditRecipe = () => {
             className="btn btn-warning p-2 m-2 fs-4"
             onClick={() => {
               actions.updateRecipe(updatedRecipe, id);
+              actions.getRecipes(store.loggedUser.id);
             }}
           >
             Save Changes

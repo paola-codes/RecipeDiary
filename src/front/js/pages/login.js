@@ -1,7 +1,6 @@
-import React from "react";
-import { useState } from "react";
+import React, { useState, useContext } from "react";
+import { PropTypes } from "prop-types";
 import { Context } from "../store/appContext";
-import { useContext } from "react";
 import { Link } from "react-router-dom";
 import Rice from "../../img/rice.png";
 import Spices from "../../img/spices.png";
@@ -9,13 +8,13 @@ import Spices from "../../img/spices.png";
 export const Login = () => {
   const { actions, store } = useContext(Context);
 
-  const [newUser, setnewUser] = useState({
-    email: null,
-    password: null,
+  const [user, setUser] = useState({
+    email: "",
+    password: "",
   });
 
   const handleChange = (e) =>
-    setnewUser({ ...newUser, [e.target.name]: e.target.value });
+    setUser({ ...user, [e.target.name]: e.target.value });
 
   const myFetch = (userInfo) => {
     fetch(`${store.backEndUrl}/api/login`, {
@@ -25,8 +24,8 @@ export const Login = () => {
     })
       .then((response) => response.json())
       .then((data) => {
-        actions.getRecipes(data.id);
         actions.updateUser(data);
+        actions.getRecipes(data.id);
       })
       .catch((err) => {
         console.error("Incorrect Information", err);
@@ -68,7 +67,9 @@ export const Login = () => {
           <button
             type="button"
             className="btn btn-primary fs-4"
-            onClick={() => myFetch(newUser)}
+            onClick={() => {
+              myFetch(user);
+            }}
           >
             Login
           </button>
@@ -76,4 +77,8 @@ export const Login = () => {
       </div>
     </div>
   );
+};
+
+Login.propTypes = {
+  history: PropTypes.object,
 };

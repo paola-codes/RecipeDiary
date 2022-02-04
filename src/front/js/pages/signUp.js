@@ -1,9 +1,7 @@
-import React from "react";
-import { ReactDOM } from "react";
-import { useState } from "react";
+import React, { useState, useContext } from "react";
+import { PropTypes } from "prop-types";
 import { Link } from "react-router-dom";
 import { Context } from "../store/appContext";
-import { useContext } from "react";
 import Fish from "../../img/fish.png";
 import CuttingBoard from "../../img/cutting_board.png";
 
@@ -11,19 +9,19 @@ export const SignUp = () => {
   const { actions, store } = useContext(Context);
 
   const [newUser, setNewUser] = useState({
-    full_name: null,
-    email: null,
-    password: null,
+    full_name: "",
+    email: "",
+    password: "",
   });
 
   const handleChange = (e) =>
     setNewUser({ ...newUser, [e.target.name]: e.target.value });
 
-  const addUser = (myNewUser) => {
+  const addUser = (newUser) => {
     fetch(`${store.backEndUrl}/api/user`, {
       method: "POST",
       headers: { "Content-Type": "application/json" },
-      body: JSON.stringify(myNewUser),
+      body: JSON.stringify(newUser),
     })
       .then((response) => response.json())
       .then((data) => console.log(data))
@@ -82,4 +80,8 @@ export const SignUp = () => {
       </div>
     </div>
   );
+};
+
+SignUp.propTypes = {
+  history: PropTypes.object,
 };

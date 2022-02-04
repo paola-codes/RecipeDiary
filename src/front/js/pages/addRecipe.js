@@ -8,12 +8,12 @@ export const AddRecipe = () => {
   const { actions, store } = useContext(Context);
 
   const [newRecipe, setnewRecipe] = useState({
-    title: null,
-    ingredients: null,
-    instructions: null,
-    ocassion: null,
-    difficulty: null,
-    comments: null,
+    title: "",
+    ingredients: "",
+    instructions: "",
+    ocassion: "",
+    difficulty: "",
+    comments: "",
     user_id: store.loggedUser.id,
   });
 
@@ -96,6 +96,7 @@ export const AddRecipe = () => {
               className="btn btn-warning p-2 m-2 fs-4"
               onClick={() => {
                 actions.addRecipe(newRecipe);
+                actions.getRecipes(store.loggedUser.id);
               }}
             >
               Add Recipe
@@ -110,4 +111,8 @@ export const AddRecipe = () => {
       </div>
     </div>
   );
+};
+
+AddRecipe.propTypes = {
+  history: PropTypes.object,
 };

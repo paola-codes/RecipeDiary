@@ -30,6 +30,7 @@ class Recipe(db.Model):
     ocassion = db.Column(db.String(120), unique=False, nullable=True)
     difficulty = db.Column(db.String(120), unique=False, nullable=True)
     comments = db.Column(db.String(120), unique=False, nullable=True)
+    favorite = db.Column(db.String(120), unique=False, nullable=True)
     #Foreign Keys
     user_id = db.Column(db.Integer, db.ForeignKey('user.id'), unique=False, nullable=True)
     
@@ -45,31 +46,6 @@ class Recipe(db.Model):
             "ocassion": self.ocassion,
             "difficulty": self.difficulty,
             "comments": self.comments,
-            "user_id": self.user_id,
-        }
-
-class Img(db.Model):
-    id = db.Column(db.Integer, primary_key=True)
-    title = db.Column(db.String(120), unique=False, nullable=True)
-    ingredients = db.Column(db.String(120), unique=False, nullable=True)
-    instructions = db.Column(db.String(120), unique=False, nullable=True)
-    ocassion = db.Column(db.String(120), unique=False, nullable=True)
-    difficulty = db.Column(db.String(120), unique=False, nullable=True)
-    comments = db.Column(db.String(120), unique=False, nullable=True)
-    #Foreign Keys
-    user_id = db.Column(db.Integer, db.ForeignKey('user.id'), unique=False, nullable=True)
-
-    def __repr__(self):
-        return '<Recipe %r>' % self.title
-
-    def serialize(self):
-        return {
-            "id": self.id,
-            "title": self.title,
-            "ingredients": self.ingredients,
-            "instructions": self.instructions,
-            "ocassion": self.ocassion,
-            "difficulty": self.difficulty,
-            "comments": self.comments,
+            "favorite": self.favorite,
             "user_id": self.user_id,
         }

@@ -84,6 +84,17 @@ def update_user_profile(id):
 
 #Recipe Methods--------------------------------------------------------------------
 
+#Get All Recipes
+@api.route('/recipe', methods=['GET'])
+def get_all_recipes():
+
+    recipe_query = Recipe.query.all()
+    all_recipes = list(map(lambda x: x.serialize(), recipe_query))
+
+    return jsonify(
+        all_recipes
+    ), 200
+
 #Get User Recipes
 @api.route('/recipe/user/<user_id>', methods=['GET'])
 def get_recipes(user_id):
@@ -108,6 +119,7 @@ def add_recipe():
         ocassion = body["ocassion"],
         difficulty = body["difficulty"],
         comments = body["comments"],
+        favorite = "No",
         user_id = body["user_id"]
     )
 
@@ -132,12 +144,49 @@ def update_recipe(id):
     recipe.ocassion = body["ocassion"]
     recipe.difficulty = body["difficulty"]
     recipe.comments = body["comments"]
+    recipe.favorite = body["favorite"],
 
     db.session.commit()
 
     recipe_query = Recipe.query.get(id)
 
     if recipe_query.title == body["title"]:
+        return jsonify(recipe_query.serialize()), 200
+    return "Update Failed"
+
+#Mark Recipe as Favorite
+@api.route('/recipe/yesFavorite/<id>', methods=['PUT'])
+def favorite_recipe(id):
+    
+    recipe = Recipe.query.get(id)
+
+    body = request.get_json()
+
+    recipe.favorite = body["favorite"]
+
+    db.session.commit()
+
+    recipe_query = Recipe.query.get(id)
+
+    if recipe_query.favorite == body["favorite"]:
+        return jsonify(recipe_query.serialize()), 200
+    return "Update Failed"
+
+#Mark Recipe as NOT Favorite
+@api.route('/recipe/noFavorite/<id>', methods=['PUT'])
+def not_favorite_recipe(id):
+    
+    recipe = Recipe.query.get(id)
+
+    body = request.get_json()
+
+    recipe.favorite = body["favorite"]
+
+    db.session.commit()
+
+    recipe_query = Recipe.query.get(id)
+
+    if recipe_query.favorite == body["favorite"]:
         return jsonify(recipe_query.serialize()), 200
     return "Update Failed"
 

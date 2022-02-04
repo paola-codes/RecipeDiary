@@ -13,8 +13,6 @@ import Mixer from "../../img/mixer.png";
 export const UserHomePage = () => {
   const { store, actions } = useContext(Context);
 
-  actions.getRecipes(store.loggedUser.id);
-
   return (
     <div className="container my-5 mx-0 text-center text-white bg-dark">
       <div className="row">
@@ -41,6 +39,21 @@ export const UserHomePage = () => {
               }}
             >
               Recipes List
+            </button>
+          </Link>
+          <img src={Veggies} width="65" className="ps-3" />
+        </div>
+
+        <div className="py-3 px-0">
+          <img src={Pot2} width="65" className="pe-3" />
+          <Link to="/recipesList">
+            <button
+              className="btn btn-success btn-lg fs-4"
+              onClick={() => {
+                actions.getRecipes(store.loggedUser.id);
+              }}
+            >
+              Favorites
             </button>
           </Link>
           <img src={Veggies} width="65" className="ps-3" />

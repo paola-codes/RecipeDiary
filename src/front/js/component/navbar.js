@@ -4,7 +4,7 @@ import { Navbar, Nav, Container } from "react-bootstrap";
 import { Context } from "../store/appContext";
 import Cook_Book from "../../img/cook_book.png";
 
-export const Navbar = () => {
+export const MyNavbar = () => {
   const { store, actions } = useContext(Context);
 
   return (

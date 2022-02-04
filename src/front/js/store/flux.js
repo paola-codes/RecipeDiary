@@ -4,15 +4,18 @@ const getState = ({ getStore, getActions, setStore }) => {
       backEndUrl: process.env.BACKEND_URL,
       loggedUser: {},
       recipeList: [],
-      favoritesList: [],
+      allRecipes: [],
+      favorites: [],
     },
     actions: {
-      /*User Login & LogOut--------------------------------------------------*/
-      updateUser: (loginInfo) => {
-        setStore({ loggedUser: loginInfo });
+      /*Get All Recipes---------------------------------------------------------*/
+      getAllRecipes: () => {
+        fetch(`${getStore().backEndUrl}/api/recipe`)
+          .then((res) => res.json())
+          .then((data) => setStore({ allRecipes: data }))
+          .catch((err) => console.error(err));
       },
-      logout: () => setStore({ loggedUser: null }),
-      /*Get Recipes----------------------------------------------------------*/
+      /*Get User Recipes-------------------------------------------------------*/
       getRecipes: (id) => {
         fetch(`${getStore().backEndUrl}/api/recipe/user/${id}`)
           .then((res) => res.json())
@@ -27,7 +30,6 @@ const getState = ({ getStore, getActions, setStore }) => {
           body: JSON.stringify(updatedRecipe),
         })
           .then((response) => response.json())
-          .then((data) => setStore({ recipeList: data }))
           .catch((err) => console.error("Error:", err));
       },
       /*Add Recipe------------------------------------------------------------*/
@@ -41,6 +43,26 @@ const getState = ({ getStore, getActions, setStore }) => {
           .then((data) => setStore({ recipeList: data }))
           .catch((err) => console.error("Error:", err));
       },
+      /*Yes Favorite-----------------------------------------------------------*/
+      yesFavorite: (yesFavoriteStatus, id) => {
+        fetch(`${getStore().backEndUrl}/api/recipe/yesFavorite/${id}`, {
+          method: "PUT",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify(yesFavoriteStatus),
+        })
+          .then((response) => response.json())
+          .catch((err) => console.error("Error:", err));
+      },
+      /*No Favorite---------------------------------------------------------*/
+      noFavorite: (noFavoriteStatus, id) => {
+        fetch(`${getStore().backEndUrl}/api/recipe/noFavorite/${id}`, {
+          method: "PUT",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify(noFavoriteStatus),
+        })
+          .then((response) => response.json())
+          .catch((err) => console.error("Error:", err));
+      },
       /*Delete Recipes--------------------------------------------------------*/
       deleteRecipe: (id) => {
         fetch(`${getStore().backEndUrl}/api/recipe/${id}`, {
@@ -49,21 +71,6 @@ const getState = ({ getStore, getActions, setStore }) => {
           .then((response) => response.json())
           .then((data) => setStore({ recipeList: data }))
           .catch((err) => console.error("Error:", err));
-      },
-      /*Add Favorite-----------------------------------------------------------*/
-      addFavorites: (id) => {
-        let favsList = getStore().favoritesList;
-        if (!getStore().favoritesList.find((item) => item == id)) {
-          favsList.push(id);
-        }
-        setStore({ favoritesList: favsList });
-      },
-      /*Delete Favorite---------------------------------------------------------*/
-      deleteFavorite: (id) => {
-        let filterFavorites = getStore().favoritesList.filter(
-          (favoriteToRemove, index) => id != favoriteToRemove
-        );
-        setStore({ favoritesList: filterFavorites });
       },
       /*Update User Profile------------------------------------------------------*/
       updateUserProfile: (updatedProfile, id) => {
@@ -75,6 +82,15 @@ const getState = ({ getStore, getActions, setStore }) => {
           .then((response) => response.json())
           .then((data) => setStore({ loggedUser: data }))
           .catch((err) => console.error("Error:", err));
+      },
+      /*User Login & LogOut--------------------------------------------------*/
+      updateUser: (loginInfo) => {
+        setStore({ loggedUser: loginInfo });
+      },
+      logOut: () => {
+        setStore({ loggedUser: {} });
+        setStore({ listOfVehicles: [] });
+        setStore({ acceptedRequests: [] });
       },
     },
   };

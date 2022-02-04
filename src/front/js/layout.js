@@ -16,7 +16,7 @@ import { Profile } from "./pages/profile";
 import { EditProfile } from "./pages/editProfile";
 import { FavoritesList } from "./pages/favoritesList";
 
-import { Navbar } from "./component/navbar";
+import { MyNavbar } from "./component/navbar";
 import { Footer } from "./component/footer";
 
 import injectContext from "./store/appContext";
@@ -45,42 +45,42 @@ const Layout = () => {
               <LoginRequired />
             </Route>
             <Route exact path="/userHomePage">
-              <Navbar />
+              <MyNavbar />
               <UserHomePage />
               <Footer />
             </Route>
             <Route exact path="/addRecipe">
-              <Navbar />
+              <MyNavbar />
               <AddRecipe />
               <Footer />
             </Route>
             <Route exact path="/recipesList">
-              <Navbar />
+              <MyNavbar />
               <RecipesList />
               <Footer />
             </Route>
             <Route exact path="/recipeDetails/:id">
-              <Navbar />
+              <MyNavbar />
               <RecipeDetails />
               <Footer />
             </Route>
             <Route exact path="/editRecipe/:id">
-              <Navbar />
+              <MyNavbar />
               <EditRecipe />
               <Footer />
             </Route>
             <Route exact path="/profile">
-              <Navbar />
+              <MyNavbar />
               <Profile />
               <Footer />
             </Route>
             <Route exact path="/editProfile">
-              <Navbar />
+              <MyNavbar />
               <EditProfile />
               <Footer />
             </Route>
             <Route exact path="/favoritesList">
-              <Navbar />
+              <MyNavbar />
               <FavoritesList />
               <Footer />
             </Route>

@@ -20,7 +20,7 @@ export const FavoritesList = () => {
   const Recipes = Object.values(store.recipeList).filter(RecipesFilter);
 
   return (
-    <div className="container py-4 px-3 mx-0 text-center text-light fs-4 my-1">
+    <div className="container py-4 px-3 mx-0 mx-auto text-center text-light fs-4 my-1">
       <h1 className="py-3 pb-4 px-0">
         <img src={Pudding} width="65" className="pe-3" />
         Favorites

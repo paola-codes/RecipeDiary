@@ -18,7 +18,7 @@ export const RecipeDetails = () => {
 
   if (recipe) {
     return (
-      <div className="container text-center text-light mx-0 p-4 m-0">
+      <div className="container text-center text-light mx-0 mx-auto p-4 m-0">
         <h1 className="text-center">
           <img src={CookBook} width="55" className="pe-2" />
           {recipe.title}

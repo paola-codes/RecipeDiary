@@ -23,7 +23,7 @@ export const EditRecipe = () => {
   };
 
   return (
-    <div className="container py-4 px-3 mx-0 text-center text-light fs-4 my-1">
+    <div className="container py-4 px-3 mx-0 mx-auto text-center text-light fs-4 my-1">
       <h1 className="text-center my-3">
         <img src={Ingredients} width="65" className="pe-2" />
         Edit Recipe Information

@@ -4,7 +4,7 @@ import { Context } from "../store/appContext";
 export const Footer = () => {
   const { store, actions } = useContext(Context);
   return (
-    <div className="container d-inline-flex justify-content-center text-light py-2">
+    <div className="container mx-auto text-light py-2">
       <div className="col-9 text-center mx-auto">
         <h4>
           RecipeDiary Copyrigth{" "}

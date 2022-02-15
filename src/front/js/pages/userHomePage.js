@@ -16,7 +16,7 @@ export const UserHomePage = () => {
   const { store, actions } = useContext(Context);
 
   return (
-    <div className="container my-5 mx-0 text-center text-white bg-dark">
+    <div className="container my-5 mx-0 mx-auto text-center text-white bg-dark">
       <div className="row">
         <h1 className="pb-3 px-0 m-0">
           <img src={CuteHat} width="65" className="pe-2" />

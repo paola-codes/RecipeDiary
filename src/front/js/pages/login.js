@@ -35,7 +35,7 @@ export const Login = () => {
   };
 
   return (
-    <div className="container mx-auto text-center text-white">
+    <div className="container mx-0 mx-auto text-center text-white">
       <h1 className="m-3 pt-3">
         <img src={Spices} width="65" className="pe-3" />
         Login

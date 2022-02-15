@@ -33,7 +33,7 @@ export const SignUp = () => {
       <h1 className="m-3 pt-3">
         <img src={Fish} width="65" className="pe-3" />
         Sign Up Below
-        <img src={CuttingBoard} width="65" className="pe-3" />
+        <img src={CuttingBoard} width="65" className="ps-3" />
       </h1>
       <form className="text-start">
         <div className="form-group my-3 fs-3">

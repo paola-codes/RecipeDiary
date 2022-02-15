@@ -14,7 +14,7 @@ export const EditProfile = () => {
     setUpdatedProfile({ ...updatedProfile, [e.target.name]: e.target.value });
 
   return (
-    <div className="container py-4 px-3 mx-0 text-center text-light fs-4 my-3">
+    <div className="container py-4 px-3 mx-0 mx-auto text-center text-light fs-4 my-3">
       <h1 className="text-center mb-2">
         <strong>Edit Profile Information</strong>
       </h1>

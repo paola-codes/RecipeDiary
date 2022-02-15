@@ -6,7 +6,7 @@ export const Profile = () => {
   const { store, actions } = useContext(Context);
 
   return (
-    <div className="container py-4 px-3 mx-0 text-center text-light fs-4 mt-3">
+    <div className="container py-4 px-3 mx-0 mx-auto text-center text-light fs-4 mt-3">
       <h1 className="text-center mt-0 mb-3">
         <strong>Profile</strong>
       </h1>

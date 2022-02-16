@@ -3,7 +3,7 @@
 [![Open in Gitpod](https://gitpod.io/button/open-in-gitpod.svg)](https://gitpod.io#https://github.com/4GeeksAcademy/react-flask-hello.git)
 
 <p align="center">
-<a href="...><img height="350px" src="src/front/img/RecipeDiary.png" /></a>
+<a href="..."><img height="350px" src="src/front/img/RecipeDiary.png" /></a>
 </p>
 
 ### Front-End Activation
